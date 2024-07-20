@@ -1,0 +1,30 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Hotel {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+type Query {
+  hotels: [Hotel!]!
+  hotel(id: Int!): Hotel!
+}
+
+type Mutation {
+  createHotel(createHotelInput: CreateHotelInput!): Hotel!
+  updateHotel(updateHotelInput: UpdateHotelInput!): Hotel!
+  removeHotel(id: Int!): Hotel!
+}
+
+input CreateHotelInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateHotelInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
