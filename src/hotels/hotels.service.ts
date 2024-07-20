@@ -1,6 +1,5 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { GraphQLError } from 'graphql';
 import { Repository } from 'typeorm';
 
 import { CreateHotelInput } from './dto/create-hotel.input';
@@ -28,7 +27,7 @@ export class HotelsService {
     });
 
     if (!hotel) {
-      throw new GraphQLError('Hotel not found');
+      throw new NotFoundException('Hotel not found');
     }
 
     return hotel;

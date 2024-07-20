@@ -27,11 +27,61 @@ describe('HotelsService', () => {
     expect(repo).toBeDefined();
   });
 
-  it('should return all hotels', async () => {
-    const hotels = [new Hotel(), new Hotel()];
+  describe('findOne', () => {
+    it('should return a hotel', async () => {
+      const hotel = new Hotel();
 
-    repo.find.mockResolvedValue(hotels);
+      repo.findOneBy.mockResolvedValue(hotel);
 
-    expect(await service.findAll()).toBe(hotels);
+      expect(await service.findOne(hotel.id)).toBe(hotel);
+    });
+
+    it('should throw an error if hotel is not found', async () => {
+      repo.findOneBy.mockResolvedValue(undefined);
+
+      await expect(service.findOne('1')).rejects.toThrow('Hotel not found');
+    });
+  });
+
+  describe('findAll', () => {
+    it('should return all hotels', async () => {
+      const hotels = [new Hotel()];
+
+      repo.find.mockResolvedValue(hotels);
+
+      expect(await service.findAll()).toBe(hotels);
+    });
+  });
+
+  describe('create', () => {
+    it('should create a hotel', async () => {
+      const hotel = new Hotel();
+
+      repo.save.mockResolvedValue(hotel);
+
+      expect(await service.create(hotel)).toBe(hotel);
+    });
+  });
+
+  describe('update', () => {
+    it('should update a hotel', async () => {
+      const hotel = new Hotel();
+
+      repo.save.mockResolvedValue(hotel);
+      repo.findOneBy.mockResolvedValue(hotel);
+
+      expect(await service.update(hotel.id, hotel)).toBe(hotel);
+    });
+  });
+
+  describe('remove', () => {
+    it('should remove a hotel', async () => {
+      const hotel = new Hotel();
+
+      repo.remove.mockResolvedValue(hotel);
+      repo.findOneBy.mockResolvedValue(hotel);
+
+      expect(await service.remove(hotel.id)).toBe(hotel);
+    });
   });
 });
