@@ -205,6 +205,44 @@
   dependencies:
     xss "^1.0.8"
 
+"@automock/adapters.nestjs@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@automock/adapters.nestjs/-/adapters.nestjs-2.1.0.tgz#5f3e24b3111b9d7d8d40792702d35f9b3645ea76"
+  integrity sha512-cwolpTMF+frIm6idLC/zD0obgG/Wf5wP6I8FKJBcRy+Cuc9Pyy/E7200zafYlOVzUlZUP16VqchgGWpUyb1U3Q==
+  dependencies:
+    "@automock/common" "^3.1.0"
+    "@automock/types" "^2.0.1"
+    reflect-metadata "^0.1.13"
+
+"@automock/common@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@automock/common/-/common-3.1.0.tgz#61048c994b8b58954bd033c501ac5a1460196303"
+  integrity sha512-Y7N4YnSZRuSIfGV4/PdG2JyURa9PK1maqGZBYUG2/sIW+H/Mlhc/3NpegnlUyQFRBexEJtgmUsvfzzI1/lm0JA==
+  dependencies:
+    "@automock/types" "^2.0.1"
+
+"@automock/core@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@automock/core/-/core-2.1.0.tgz#2e959e5f3d9522c93139f4e99c10e726b745441c"
+  integrity sha512-VIaY2woE7nWXhXKlNzk4+xzCuaVBXfGYwowrzdI+MmJBKqi2z0lUjNVix74hZRWhJpkOW+PR3UThFvThgyqIqQ==
+  dependencies:
+    "@automock/common" "^3.1.0"
+    "@automock/types" "^2.0.1"
+    lodash.isequal "^4.5.0"
+
+"@automock/jest@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@automock/jest/-/jest-2.1.0.tgz#8a1d4ad7fcfa505207df60e9965aeb23527af418"
+  integrity sha512-kJuTu/a5bbG8SICIfITgESpIrVbBfbMykDdICmPvJkeI51Ldq+tqiLS2Ded16vLWS9WeFKeTw/+2b/DO8QyV0Q==
+  dependencies:
+    "@automock/core" "^2.1.0"
+    "@automock/types" "^2.0.1"
+
+"@automock/types@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@automock/types/-/types-2.0.1.tgz#b06023d6e303544e64f952f5c836fdd9d5c1e502"
+  integrity sha512-ue35e4im3n7l+Eqq3kCA2nNs8jzJbjYLni+vlPdgJ+9KfsEykJjA1OpnNN/PG1tDaM0iyR2p/uZg27MOC/qiTg==
+
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.12.13", "@babel/code-frame@^7.16.7", "@babel/code-frame@^7.24.7":
   version "7.24.7"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.24.7.tgz#882fd9e09e8ee324e496bd040401c6f046ef4465"
@@ -3941,6 +3979,11 @@ locate-path@^6.0.0:
   dependencies:
     p-locate "^5.0.0"
 
+lodash.isequal@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
+  integrity sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==
+
 lodash.memoize@4.x:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
@@ -4664,6 +4707,11 @@ readdirp@~3.6.0:
   integrity sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==
   dependencies:
     picomatch "^2.2.1"
+
+reflect-metadata@^0.1.13:
+  version "0.1.14"
+  resolved "https://registry.yarnpkg.com/reflect-metadata/-/reflect-metadata-0.1.14.tgz#24cf721fe60677146bb77eeb0e1f9dece3d65859"
+  integrity sha512-ZhYeb6nRaXCfhnndflDK8qI6ZQ/YcWZCISRAWICW9XYqMUwjZM9Z0DveWX/ABN01oxSHwVxKQmxeYZSsm0jh5A==
 
 reflect-metadata@^0.2.0, reflect-metadata@^0.2.1:
   version "0.2.2"

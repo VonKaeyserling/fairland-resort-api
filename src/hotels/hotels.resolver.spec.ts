@@ -1,19 +1,22 @@
-import { Test, TestingModule } from '@nestjs/testing';
+import { TestBed } from '@automock/jest';
+
 import { HotelsResolver } from './hotels.resolver';
+
 import { HotelsService } from './hotels.service';
 
 describe('HotelsResolver', () => {
   let resolver: HotelsResolver;
+  let service: HotelsService;
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      providers: [HotelsResolver, HotelsService],
-    }).compile();
+    const { unit, unitRef } = TestBed.create(HotelsResolver).compile();
 
-    resolver = module.get<HotelsResolver>(HotelsResolver);
+    resolver = unit;
+    service = unitRef.get(HotelsService);
   });
 
   it('should be defined', () => {
     expect(resolver).toBeDefined();
+    expect(service).toBeDefined();
   });
 });
