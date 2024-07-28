@@ -1,13 +1,10 @@
-import { InputType, Field } from '@nestjs/graphql';
+import { InputType, Field, Float } from '@nestjs/graphql';
 import { Column } from 'typeorm';
 
 @InputType()
 export class CreateHotelInput {
   @Field()
   name: string;
-
-  @Field()
-  rating: number;
 
   @Field()
   shortDescription: string;
@@ -27,10 +24,10 @@ export class CreateHotelInput {
   @Field()
   slug: string;
 
-  @Field()
+  @Field(() => Float)
   latitude: number;
 
-  @Field()
+  @Field(() => Float)
   longitude: number;
 
   @Column()

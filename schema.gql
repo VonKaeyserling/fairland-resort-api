@@ -2,29 +2,124 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Room {
+  id: ID!
+  name: String!
+  shortDescription: String!
+  thumbnail: String!
+  description: String!
+  images: [String!]!
+  price: Float!
+  rating: Float!
+  avaliability: RoomAvaliability!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  hotel: Hotel!
+}
+
+enum RoomAvaliability {
+  AVAILABLE
+  NOT_AVAILABLE
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
 type Hotel {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  id: ID!
+  name: String!
+  rating: Float!
+  shortDescription: String!
+  description: String!
+  thumbnail: String!
+  images: [String!]!
+  logo: String!
+  slug: String!
+  latitude: Float!
+  longitude: Float!
+  address: String!
+  zipCode: String!
+  addressNumber: String!
+  neighborhood: String!
+  state: String!
+  city: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  rooms: [Room!]!
 }
 
 type Query {
   hotels: [Hotel!]!
-  hotel(id: Int!): Hotel!
+  hotel(id: ID!): Hotel!
+  rooms: [Room!]!
+  room(id: ID!): Room!
 }
 
 type Mutation {
   createHotel(createHotelInput: CreateHotelInput!): Hotel!
-  updateHotel(updateHotelInput: UpdateHotelInput!): Hotel!
-  removeHotel(id: Int!): Hotel!
+  updateHotel(id: ID!, updateHotelInput: UpdateHotelInput!): Hotel!
+  removeHotel(id: ID!): Hotel!
+  createRoom(createRoomInput: CreateRoomInput!): Room!
+  updateRoom(id: ID!, updateRoomInput: UpdateRoomInput!): Room!
+  removeRoom(id: ID!): Room!
 }
 
 input CreateHotelInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  name: String!
+  shortDescription: String!
+  description: String!
+  thumbnail: String!
+  images: [String!]!
+  logo: String!
+  slug: String!
+  latitude: Float!
+  longitude: Float!
+  address: String!
+  zipCode: String!
+  addressNumber: String!
+  neighborhood: String!
+  state: String!
+  city: String!
 }
 
 input UpdateHotelInput {
-  """Example field (placeholder)"""
-  exampleField: Int
-  id: Int!
+  name: String
+  shortDescription: String
+  description: String
+  thumbnail: String
+  images: [String!]
+  logo: String
+  slug: String
+  latitude: Float
+  longitude: Float
+  address: String
+  zipCode: String
+  addressNumber: String
+  neighborhood: String
+  state: String
+  city: String
+}
+
+input CreateRoomInput {
+  name: String!
+  shortDescription: String!
+  thumbnail: String!
+  description: String!
+  images: [String!]!
+  price: Float!
+  avaliability: RoomAvaliability!
+  hotel: ID!
+}
+
+input UpdateRoomInput {
+  name: String
+  shortDescription: String
+  thumbnail: String
+  description: String
+  images: [String!]
+  price: Float
+  avaliability: RoomAvaliability
+  hotel: ID
 }

@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Module } from '@nestjs/common';
 
 import { HotelsModule } from './hotels/hotels.module';
+import { RoomsModule } from './rooms/rooms.module';
 
 @Module({
   imports: [
@@ -18,15 +19,16 @@ import { HotelsModule } from './hotels/hotels.module';
     TypeOrmModule.forRootAsync({
       useFactory: (configService: ConfigService) => ({
         type: 'postgres',
-        host: configService.get('DB_HOST'),
-        username: configService.get('DB_USER'),
-        password: configService.get('DB_PASS'),
+        ssl: true,
+        url: configService.get('DATABASE_URL'),
         database: configService.get('DB_NAME'),
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
+        synchronize: true,
       }),
       inject: [ConfigService],
     }),
     HotelsModule,
+    RoomsModule,
   ],
   controllers: [],
   providers: [],

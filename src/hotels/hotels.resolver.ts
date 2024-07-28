@@ -23,6 +23,8 @@ export class HotelsResolver {
 
   @Mutation(() => Hotel)
   createHotel(@Args('createHotelInput') createHotelInput: CreateHotelInput) {
+    console.log(createHotelInput);
+
     return this.hotelsService.create(createHotelInput);
   }
 

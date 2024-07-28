@@ -1,12 +1,15 @@
-import { ObjectType, Field, ID } from '@nestjs/graphql';
+import { ObjectType, Field, ID, Float } from '@nestjs/graphql';
 
 import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+
+import { Room } from '../../rooms/entities/room.entity';
 
 @Entity()
 @ObjectType()
@@ -37,8 +40,8 @@ export class Hotel {
   @Field()
   thumbnail: string;
 
-  @Column()
-  @Field()
+  @Column('simple-array')
+  @Field(() => [String])
   images: string[];
 
   @Column()
@@ -49,12 +52,12 @@ export class Hotel {
   @Field()
   slug: string;
 
-  @Column()
-  @Field()
+  @Column('float')
+  @Field(() => Float)
   latitude: number;
 
-  @Column()
-  @Field()
+  @Column('float')
+  @Field(() => Float)
   longitude: number;
 
   @Column()
@@ -89,8 +92,9 @@ export class Hotel {
   @Field()
   updatedAt: Date;
 
-  // @Field()
-  // rooms:  Room[]
+  @OneToMany(() => Room, (room) => room.hotel)
+  @Field(() => [Room])
+  rooms: Room[];
 
   // @Field()
   // admin:  User   @relation(fields: [userId], references: [id])

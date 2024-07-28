@@ -17,20 +17,25 @@ export class HotelsService {
     return this.repo.save(hotel);
   }
 
-  findAll() {
-    return this.repo.find();
+  async findAll() {
+    const hotels = await this.repo.find({
+      relations: ['rooms'],
+    });
+
+    return hotels;
   }
 
   async findOne(id: string) {
-    const hotel = await this.repo.findOneBy({
-      id,
+    const hotel = await this.repo.find({
+      where: { id },
+      relations: ['rooms'],
     });
 
-    if (!hotel) {
+    if (!hotel[0]) {
       throw new NotFoundException('Hotel not found');
     }
 
-    return hotel;
+    return hotel[0];
   }
 
   async update(id: string, updateHotelInput: UpdateHotelInput) {
@@ -38,9 +43,7 @@ export class HotelsService {
 
     Object.assign(hotel, updateHotelInput);
 
-    const updatedHotel = await this.repo.save(hotel);
-
-    return updatedHotel;
+    return await this.repo.save(hotel);
   }
 
   async remove(id: string) {
