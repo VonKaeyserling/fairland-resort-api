@@ -1,19 +1,21 @@
-import { Test, TestingModule } from '@nestjs/testing';
+import { TestBed } from '@automock/jest';
+
 import { RoomsResolver } from './rooms.resolver';
 import { RoomsService } from './rooms.service';
 
 describe('RoomsResolver', () => {
   let resolver: RoomsResolver;
+  let service: jest.Mocked<RoomsService>;
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      providers: [RoomsResolver, RoomsService],
-    }).compile();
+    const { unit, unitRef } = TestBed.create(RoomsResolver).compile();
 
-    resolver = module.get<RoomsResolver>(RoomsResolver);
+    resolver = unit;
+    service = unitRef.get(RoomsService);
   });
 
   it('should be defined', () => {
     expect(resolver).toBeDefined();
+    expect(service).toBeDefined();
   });
 });

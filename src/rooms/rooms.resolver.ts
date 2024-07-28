@@ -16,8 +16,8 @@ export class RoomsResolver {
     return this.roomsService.create(createRoomInput);
   }
 
-  @Query(() => [Room], { name: 'rooms' })
-  findAll() {
+  @Query(() => [Room])
+  rooms() {
     return this.roomsService.findAll();
   }
 

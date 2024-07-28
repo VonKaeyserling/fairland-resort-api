@@ -31,7 +31,7 @@ export class HotelsService {
       relations: ['rooms'],
     });
 
-    if (!hotel[0]) {
+    if (!(hotel instanceof Array)) {
       throw new NotFoundException('Hotel not found');
     }
 

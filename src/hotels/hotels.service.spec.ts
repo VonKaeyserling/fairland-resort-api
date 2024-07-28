@@ -31,13 +31,13 @@ describe('HotelsService', () => {
     it('should return a hotel', async () => {
       const hotel = new Hotel();
 
-      repo.findOneBy.mockResolvedValue(hotel);
+      repo.find.mockResolvedValue([hotel]);
 
       expect(await service.findOne(hotel.id)).toBe(hotel);
     });
 
     it('should throw an error if hotel is not found', async () => {
-      repo.findOneBy.mockResolvedValue(undefined);
+      repo.find.mockResolvedValue(undefined);
 
       await expect(service.findOne('1')).rejects.toThrow('Hotel not found');
     });
