@@ -19,9 +19,8 @@ import { RoomsModule } from './rooms/rooms.module';
     TypeOrmModule.forRootAsync({
       useFactory: (configService: ConfigService) => ({
         type: 'postgres',
-        ssl: true,
+        ssl: { rejectUnauthorized: false },
         url: configService.get('DATABASE_URL'),
-        database: configService.get('DB_NAME'),
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
         synchronize: true,
       }),
