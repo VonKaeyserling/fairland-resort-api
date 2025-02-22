@@ -15,6 +15,8 @@ import { RoomsModule } from './rooms/rooms.module';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       autoSchemaFile: 'schema.gql',
       driver: ApolloDriver,
+      path: '/',
+      sortSchema: true,
     }),
     TypeOrmModule.forRootAsync({
       useFactory: (configService: ConfigService) => ({
